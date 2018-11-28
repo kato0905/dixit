@@ -1,0 +1,109 @@
+<% if params[:name6] != "" then %>
+  <% name6 = params[:name6] %>
+  <% name5 = params[:name5] %>
+  <% name4 = params[:name4] %>
+  <% number = 6 %>
+  <% cards = (1..219).to_a.shuffle[0...number*6] %>
+  <% name6card= cards.slice!(0..5)%>
+  <% name5card= cards.slice!(0..5)%>
+  <% name4card= cards.slice!(0..5)%>
+<% elsif params[:name5] != "" then %>
+  <% name5 = params[:name5] %>
+  <% name4 = params[:name4] %>
+  <% number = 5 %>
+  <% cards = (1..219).to_a.shuffle[0...number*6] %>
+  <% name5card= cards.slice!(0..5)%>
+  <% name4card= cards.slice!(0..5)%>
+<% elsif params[:name4] != "" then %>
+  <% name4 = params[:name4] %>
+  <% number = 4 %>
+  <% cards = (1..219).to_a.shuffle[0...number*6] %>
+  <% name4card= cards.slice!(0..5)%>
+<% elsif params[:name3] != "" then %>
+  <% number = 3 %>
+  <% cards = (1..219).to_a.shuffle[0...number*6] %>
+<% end %>
+
+<% name3 = params[:name3] %>
+<% name2 = params[:name2] %>
+<% name1 = params[:name1] %>
+<% name3card= cards.slice!(0..5)%>
+<% name2card= cards.slice!(0..5)%>
+<% name1card= cards.slice(0..5)%>
+
+<% current_number = 1 %>
+
+<h1><%= name1 %>はストーリーテラーです</h1>
+下の６枚の絵から一枚を選択し、その絵柄を想像させるようなテキストを
+入力してください<br>
+それが終わったら下の送信ボタンを押してください<br>
+
+※ページをリロードすることで画像の更新ができます<br>
+
+
+<form action="../individual/confirm" name="to_start" method="get">
+  <input type="text" name="story" style="width:300px;height:50px;" required/><br>
+  <h2>あなたのカード一覧</h2>
+  <label>
+  <%= radio_button 'name1select',"val",name1card.slice(0), required: true%>
+  <%= image_tag "cards/card#{"%05d" % name1card.slice(0)}.png", :size => '224x312' %>
+  </label><label>
+  <%= radio_button 'name1select',"val",name1card.slice(1), required: true%>
+  <%= image_tag "cards/card#{"%05d" % name1card.slice(1)}.png", :size => '224x312' %>
+</label><label>
+  <%= radio_button 'name1select',"val",name1card.slice(2), required: true%>
+  <%= image_tag "cards/card#{"%05d" % name1card.slice(2)}.png", :size => '224x312' %>
+</label><br><label>
+  <%= radio_button 'name1select',"val",name1card.slice(3), required: true%>
+  <%= image_tag "cards/card#{"%05d" % name1card.slice(3)}.png", :size => '224x312' %>
+</label><label>
+  <%= radio_button 'name1select',"val",name1card.slice(4), required: true%>
+  <%= image_tag "cards/card#{"%05d" % name1card.slice(4)}.png", :size => '224x312' %>
+</label><label>
+  <%= radio_button 'name1select',"val",name1card.slice(5), required: true%>
+  <%= image_tag "cards/card#{"%05d" % name1card.slice(5)}.png", :size => '224x312' %>
+  </label>
+
+  <%= hidden_field_tag :number, "#{number}" %>
+  <%= hidden_field_tag :current_number, "#{current_number}" %>
+
+  <% if number >= 6 then %>
+  <%= hidden_field_tag :name6card, "#{name6card}" %>
+  <%= hidden_field_tag :name5card, "#{name5card}" %>
+  <%= hidden_field_tag :name4card, "#{name4card}" %>
+  <%= hidden_field_tag :name6, "#{name6}" %>
+  <%= hidden_field_tag :name5, "#{name5}" %>
+  <%= hidden_field_tag :name4, "#{name4}" %>
+  <% elsif number >= 5 then %>
+  <%= hidden_field_tag :name5card, "#{name5card}" %>
+  <%= hidden_field_tag :name4card, "#{name4card}" %>
+  <%= hidden_field_tag :name5, "#{name5}" %>
+  <%= hidden_field_tag :name4, "#{name4}" %>
+  <% elsif number >= 4 then %>
+  <%= hidden_field_tag :name4card, "#{name4card}" %>
+  <%= hidden_field_tag :name6, "#{name4}" %>
+  <% end %>
+  <%= hidden_field_tag :name3card, "#{name3card}" %>
+  <%= hidden_field_tag :name2card, "#{name2card}" %>
+  <%= hidden_field_tag :name1card, "#{name1card}" %>
+  <%= hidden_field_tag :name3, "#{name3}" %>
+  <%= hidden_field_tag :name2, "#{name2}" %>
+  <%= hidden_field_tag :name1, "#{name1}" %>
+  <%= submit_tag "送信" ,id: "submit" %>
+
+<end>
+<br>
+
+参加者一覧<br>
+<% if number >= 6 %>
+<%= name6 %><br>
+<% end %>
+<% if number >= 5 %>
+<%= name5 %><br>
+<% end %>
+<% if number >= 4 %>
+<%= name4 %><br>
+<% end %>
+<%= name3 %><br>
+<%= name2 %><br>
+<%= name1 %>

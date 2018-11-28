@@ -1,0 +1,156 @@
+
+<% current_number = params[:current_number].to_i+1 %>
+<% number = params[:number].to_i %>
+<% story = params[:story] %>
+
+<% if number >= 6 then%>
+<% name6 = params[:name6]%>
+<% name6card = params[:name6card]%>
+<% end %>
+<% if number >= 5 then%>
+<% name5 = params[:name5]%>
+<% name5card = params[:name5card]%>
+<% end %>
+<% if number >= 4 then%>
+<% name4 = params[:name4]%>
+<% name4card = params[:name4card]%>
+<% end %>
+<% name3 = params[:name3]%>
+<% name3card = params[:name3card]%>
+<% name2 = params[:name2]%>
+<% name2card = params[:name2card] %>
+<% name1 = params[:name1]%>
+<% name1card = params[:name1card]%>
+
+
+<% if current_number == 2 then%>
+  <% current_card = name2card.delete("[").delete("]").split(",") %>
+  <% current_name = name2 %>
+  <% name1select = params[:name1select] %>
+<% elsif current_number == 3 then %>
+<% current_card = name3card.delete("[").delete("]").split(",") %>
+<% current_name = name3 %>
+<% name1select = params[:name1select] %>
+<% name2select = params[:name2select] %>
+<% elsif current_number == 4 then %>
+<% current_card = name4card.delete("[").delete("]").split(",") %>
+<% current_name = name4 %>
+<% name1select = params[:name1select] %>
+<% name2select = params[:name2select] %>
+<% name3select = params[:name3select] %>
+<% elsif current_number == 5 then %>
+<% current_card = name5card.delete("[").delete("]").split(",") %>
+<% current_name = name5 %>
+<% name1select = params[:name1select] %>
+<% name2select = params[:name2select] %>
+<% name3select = params[:name3select] %>
+<% name4select = params[:name4select] %>
+<% elsif current_number == 6 then %>
+<% current_card = name6card.delete("[").delete("]").split(",") %>
+<% current_name = name6 %>
+<% name1select = params[:name1select] %>
+<% name2select = params[:name2select] %>
+<% name3select = params[:name3select] %>
+<% name4select = params[:name4select] %>
+<% name5select = params[:name5select] %>
+<% end %>
+
+
+<% if number != current_number %>
+<form action="../individual/confirm" name="to_start" method="get">
+<% elsif number == current_number %>
+<form action="../result/result" name="to_start" method="get">
+<% end %>
+<h2>下のお題を想像できるような絵を一枚選択してください</h2>
+<h1>お題： <%= story %> </h1>
+<h2><%= current_name %> のカード一覧</h2>
+<label>
+<%= radio_button 'current_select',"val",current_card.slice(0), required: true %>
+<%= image_tag "cards/card#{"%05d" % current_card.slice(0)}.png", :size => '224x312' %>
+</label><label>
+<%= radio_button 'current_select',"val",current_card.slice(1), required: true %>
+<%= image_tag "cards/card#{"%05d" % current_card.slice(1)}.png", :size => '224x312' %>
+</label><label>
+<%= radio_button 'current_select',"val",current_card.slice(2), required: true %>
+<%= image_tag "cards/card#{"%05d" % current_card.slice(2)}.png", :size => '224x312' %>
+</label><br><label>
+<%= radio_button 'current_select',"val",current_card.slice(3), required: true %>
+<%= image_tag "cards/card#{"%05d" % current_card.slice(3)}.png", :size => '224x312' %>
+</label><label>
+<%= radio_button 'current_select',"val",current_card.slice(4), required: true %>
+<%= image_tag "cards/card#{"%05d" % current_card.slice(4)}.png", :size => '224x312' %>
+</label><label>
+<%= radio_button 'current_select',"val",current_card.slice(5), required: true %>
+<%= image_tag "cards/card#{"%05d" % current_card.slice(5)}.png", :size => '224x312' %>
+</label>
+
+<%= hidden_field_tag :number, "#{number}" %>
+<%= hidden_field_tag :story, "#{story}" %>
+<%= hidden_field_tag :current_number, "#{current_number}" %>
+
+
+<% if current_number == 2 then %>
+<%= hidden_field_tag :name1select, "#{name1select}" %>
+<% elsif current_number == 3 then %>
+<%= hidden_field_tag :name1select, "#{name1select}" %>
+<%= hidden_field_tag :name2select, "#{name2select}" %>
+<% elsif current_number == 4 then %>
+<%= hidden_field_tag :name1select, "#{name1select}" %>
+<%= hidden_field_tag :name2select, "#{name2select}" %>
+<%= hidden_field_tag :name3select, "#{name3select}" %>
+<% elsif current_number == 5 then %>
+<%= hidden_field_tag :name1select, "#{name1select}" %>
+<%= hidden_field_tag :name2select, "#{name2select}" %>
+<%= hidden_field_tag :name3select, "#{name3select}" %>
+<%= hidden_field_tag :name4select, "#{name4select}" %>
+<% elsif current_number == 6 then %>
+<%= hidden_field_tag :name1select, "#{name1select}" %>
+<%= hidden_field_tag :name2select, "#{name2select}" %>
+<%= hidden_field_tag :name3select, "#{name3select}" %>
+<%= hidden_field_tag :name4select, "#{name4select}" %>
+<%= hidden_field_tag :name5select, "#{name5select}" %>
+<% end %>
+
+
+<% if number >= 6 then %>
+<%= hidden_field_tag :name6card, "#{name6card}" %>
+<%= hidden_field_tag :name5card, "#{name5card}" %>
+<%= hidden_field_tag :name4card, "#{name4card}" %>
+<%= hidden_field_tag :name6, "#{name6}" %>
+<%= hidden_field_tag :name5, "#{name5}" %>
+<%= hidden_field_tag :name4, "#{name4}" %>
+<% elsif number >= 5 then %>
+<%= hidden_field_tag :name5card, "#{name5card}" %>
+<%= hidden_field_tag :name4card, "#{name4card}" %>
+<%= hidden_field_tag :name5, "#{name5}" %>
+<%= hidden_field_tag :name4, "#{name4}" %>
+<% elsif number >= 4 then %>
+<%= hidden_field_tag :name4card, "#{name4card}" %>
+<%= hidden_field_tag :name6, "#{name4}" %>
+<% end %>
+<%= hidden_field_tag :name3card, "#{name3card}" %>
+<%= hidden_field_tag :name2card, "#{name2card}" %>
+<%= hidden_field_tag :name1card, "#{name1card}" %>
+<%= hidden_field_tag :name3, "#{name3}" %>
+<%= hidden_field_tag :name2, "#{name2}" %>
+<%= hidden_field_tag :name1, "#{name1}" %>
+<%= submit_tag "送信" ,id: "submit" %>
+
+<end>
+
+
+
+<br>
+参加者一覧<br>
+<% if number >= 6 %>
+<%= name6 %><br>
+<% end %>
+<% if number >= 5 %>
+<%= name5 %><br>
+<% end %>
+<% if number >= 4 %>
+<%= name4 %><br>
+<% end %>
+<%= name3 %><br>
+<%= name2 %><br>
+<%= name1 %>

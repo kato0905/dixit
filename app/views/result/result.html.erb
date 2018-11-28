@@ -1,0 +1,147 @@
+<% current_number = params[:current_number].to_i%>
+
+<h1>お題:<%=params[:story]%></h1><br>
+<h1>みんなの選んだ画像</h1>
+
+<% random = (0..current_number).to_a.shuffle[0...current_number+1] %>
+<% i = 0 %>
+<% random_card = (1..219).to_a.shuffle[0...current_number+1]%>
+
+<% if current_number == 3 then %>
+  <% name1select = params[:name1select] %>
+  <% name2select = params[:name2select] %>
+  <% name3select = params[:current_select][:val] %>
+  <% for var in random_card do %>
+    <% if var != eval("#{name1select}") && var != eval("#{name2select}") && var != eval("#{name3select}") %>
+      <% random_card_select = var %>
+      <% break %>
+    <% end %>
+  <% end %>
+  <% selected_card = [eval("#{name1select}"),eval("#{name2select}"),eval("#{name3select}"),eval("#{random_card_select}")] %>
+  <%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(0)}"))}")}.png", :size => '224x312' %>
+  <%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(1)}"))}")}.png", :size => '224x312' %>
+  <%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(2)}"))}")}.png", :size => '224x312' %>
+  <%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(3)}"))}")}.png", :size => '224x312' %>
+
+
+<% elsif current_number == 4 then %>
+<% name4 = params[:name4]%>
+<% name1select = params[:name1select] %>
+<% name2select = params[:name2select] %>
+<% name3select = params[:name3select] %>
+<% name4select = params[:current_select][:val] %>
+<% for var in random_card do %>
+  <% if var != eval("#{name1select}") && var != eval("#{name2select}") && var != eval("#{name3select}") && var != eval("#{name4select}") %>
+    <% random_card_select = var %>
+    <% break %>
+  <% end %>
+<% end %>
+<% selected_card = [eval("#{name1select}"),eval("#{name2select}"),eval("#{name3select}"),eval("#{name4select}"),eval("#{random_card_select}")] %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(0)}"))}")}.png", :size => '224x312' %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(1)}"))}")}.png", :size => '224x312' %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(2)}"))}")}.png", :size => '224x312' %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(3)}"))}")}.png", :size => '224x312' %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(4)}"))}")}.png", :size => '224x312' %>
+
+
+<% elsif current_number == 5 then %>
+<% name5 = params[:name5]%>
+<% name4 = params[:name4]%>
+<% name1select = params[:name1select] %>
+<% name2select = params[:name2select] %>
+<% name3select = params[:name3select] %>
+<% name4select = params[:name4select] %>
+<% name5select = params[:current_select][:val] %>
+<% for var in random_card do %>
+  <% if var != eval("#{name1select}") && var != eval("#{name2select}") && var != eval("#{name3select}") && var != eval("#{name4select}") && var != eval("#{name5select}") %>
+    <% random_card_select = var %>
+    <% break %>
+  <% end %>
+<% end %>
+<% selected_card = [eval("#{name1select}"),eval("#{name2select}"),eval("#{name3select}"),eval("#{name4select}"),eval("#{name5select}"),eval("#{random_card_select}")] %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(0)}"))}")}.png", :size => '224x312' %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(1)}"))}")}.png", :size => '224x312' %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(2)}"))}")}.png", :size => '224x312' %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(3)}"))}")}.png", :size => '224x312' %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(4)}"))}")}.png", :size => '224x312' %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(5)}"))}")}.png", :size => '224x312' %>
+
+
+<% elsif current_number == 6 then %>
+<% name6 = params[:name6]%>
+<% name5 = params[:name5]%>
+<% name4 = params[:name4]%>
+<% name1select = params[:name1select] %>
+<% name2select = params[:name2select] %>
+<% name3select = params[:name3select] %>
+<% name4select = params[:name4select] %>
+<% name5select = params[:name5select] %>
+<% name6select = params[:current_select][:val] %>
+<% for var in random_card do %>
+  <% if var != eval("#{name1select}") && var != eval("#{name2select}") && var != eval("#{name3select}") && var != eval("#{name4select}") && var != eval("#{name5select}") && var != eval("#{name6select}") %>
+    <% random_card_select = var %>
+    <% break %>
+  <% end %>
+<% end %>
+<% selected_card = [eval("#{name1select}"),eval("#{name2select}"),eval("#{name3select}"),eval("#{name4select}"),eval("#{name5select}"),eval("#{name6select}"),eval("#{random_card_select}")] %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(0)}"))}")}.png", :size => '224x312' %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(1)}"))}")}.png", :size => '224x312' %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(2)}"))}")}.png", :size => '224x312' %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(3)}"))}")}.png", :size => '224x312' %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(4)}"))}")}.png", :size => '224x312' %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(5)}"))}")}.png", :size => '224x312' %>
+<%= image_tag "cards/card#{"%05d" % eval("#{selected_card.slice(eval("#{random.slice(6)}"))}")}.png", :size => '224x312' %>
+<% end %>
+
+<% name1 = params[:name1]%>
+<% name2 = params[:name2]%>
+<% name3 = params[:name3]%>
+
+<h2>ルール</h2>
+テキストを入力したプレイヤー以外は並べられたカードを見て、
+テキストを入力したプレイヤーが選んだと思うカードに投票します。<br><br>
+
+1,全員が当てた、もしくは全員がハズした場合<br>
+テキストを入力したプレイヤー：０点<br>
+それ以外の全員：２点<br><br>
+2,上記以外の場合<br>
+テキストを入力したプレイヤーと当てたプレイヤー：３点<br>
+それ以外のプレイヤー：０点<br><br>
+3,テキストを入力したプレイヤー以外で自分が出したカードへの投票があった場合<br>
+投票１つにつき１点<br>
+<br>
+※ランダムにカードが一枚追加されています<br><br>
+
+<form action="../individual/teller" name="to_start" method="get" onsubmit="return check_form()">
+  <% if current_number >= 6 then %>
+  <%= hidden_field_tag :name6, "#{name5}" %>
+  <%= hidden_field_tag :name5, "#{name4}" %>
+  <%= hidden_field_tag :name4, "#{name3}" %>
+  <%= hidden_field_tag :name3, "#{name2}" %>
+  <%= hidden_field_tag :name2, "#{name1}" %>
+  <%= hidden_field_tag :name1, "#{name6}" %>
+  <% elsif current_number >= 5 then %>
+  <%= hidden_field_tag :name6, "" %>
+  <%= hidden_field_tag :name5, "#{name4}" %>
+  <%= hidden_field_tag :name4, "#{name3}" %>
+  <%= hidden_field_tag :name3, "#{name2}" %>
+  <%= hidden_field_tag :name2, "#{name1}" %>
+  <%= hidden_field_tag :name1, "#{name5}" %>
+  <% elsif current_number >= 4 then %>
+  <%= hidden_field_tag :name6, "" %>
+  <%= hidden_field_tag :name5, "" %>
+  <%= hidden_field_tag :name4, "#{name3}" %>
+  <%= hidden_field_tag :name3, "#{name2}" %>
+  <%= hidden_field_tag :name2, "#{name1}" %>
+  <%= hidden_field_tag :name1, "#{name4}" %>
+  <% elsif current_number >= 3 then %>
+  <%= hidden_field_tag :name6, "" %>
+  <%= hidden_field_tag :name5, "" %>
+  <%= hidden_field_tag :name4, "" %>
+  <%= hidden_field_tag :name3, "#{name2}" %>
+  <%= hidden_field_tag :name2, "#{name1}" %>
+  <%= hidden_field_tag :name1, "#{name3}" %>
+  <% end %>
+  <input type="submit" value="次のゲームへ" >
+</form>
+<%= link_to "名前入力に戻る", :controller => "players", :action => "index" %>

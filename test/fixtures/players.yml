@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  val1: 1
+  val2: 1
+  val3: 1
+  val4: 1
+  val5: 1
+  val6: 1
+
+two:
+  val1: 1
+  val2: 1
+  val3: 1
+  val4: 1
+  val5: 1
+  val6: 1
