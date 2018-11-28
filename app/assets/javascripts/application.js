@@ -16,7 +16,6 @@
 
 
 function check_form(){
-  alert("tyellu")
   var count = 0;
   if (document.getElementById("n1").value == ""){
     count = count+1;

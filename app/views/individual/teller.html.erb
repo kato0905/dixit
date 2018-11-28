@@ -3,7 +3,7 @@
   <% name5 = params[:name5] %>
   <% name4 = params[:name4] %>
   <% number = 6 %>
-  <% cards = (1..219).to_a.shuffle[0...number*6] %>
+  <% cards = (1..508).to_a.shuffle[0...number*6] %>
   <% name6card= cards.slice!(0..5)%>
   <% name5card= cards.slice!(0..5)%>
   <% name4card= cards.slice!(0..5)%>
@@ -11,17 +11,17 @@
   <% name5 = params[:name5] %>
   <% name4 = params[:name4] %>
   <% number = 5 %>
-  <% cards = (1..219).to_a.shuffle[0...number*6] %>
+  <% cards = (1..508).to_a.shuffle[0...number*6] %>
   <% name5card= cards.slice!(0..5)%>
   <% name4card= cards.slice!(0..5)%>
 <% elsif params[:name4] != "" then %>
   <% name4 = params[:name4] %>
   <% number = 4 %>
-  <% cards = (1..219).to_a.shuffle[0...number*6] %>
+  <% cards = (1..508).to_a.shuffle[0...number*6] %>
   <% name4card= cards.slice!(0..5)%>
 <% elsif params[:name3] != "" then %>
   <% number = 3 %>
-  <% cards = (1..219).to_a.shuffle[0...number*6] %>
+  <% cards = (1..508).to_a.shuffle[0...number*6] %>
 <% end %>
 
 <% name3 = params[:name3] %>
@@ -38,7 +38,7 @@
 入力してください<br>
 それが終わったら下の送信ボタンを押してください<br>
 
-※ページをリロードすることで画像の更新ができます<br>
+※他プレイヤーに画像を見られた場合、ページをリロードすることで画像の更新ができます<br>
 
 
 <form action="../individual/confirm" name="to_start" method="get">
